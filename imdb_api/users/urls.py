@@ -3,4 +3,4 @@ from rest_framework import routers
 from .views import UserViewSet
 
 userRouter = routers.SimpleRouter()
-userRouter.register(r'users', UserViewSet)
+userRouter.register(r'users', UserViewSet, basename='users')

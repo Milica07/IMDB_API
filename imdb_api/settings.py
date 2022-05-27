@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'imdb_api.users',
+    'imdb_api.movies',
     'corsheaders',
+    'django_filters',
+    'django_seed',
 ]
 
 MIDDLEWARE = [
@@ -145,5 +148,15 @@ REST_FRAMEWORK = {
 } 
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=100),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
 }
+
+# CORS configuration
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3005",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3005',
+]

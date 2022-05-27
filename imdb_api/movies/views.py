@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework import viewsets, mixins
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from .models import Movie
+from .serializers import MovieSerializer
 
-# Create your views here.
+class MovieViewSet(mixins.ListModelMixin,
+                viewsets.GenericViewSet):
+
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+    permission_classes = [AllowAny]

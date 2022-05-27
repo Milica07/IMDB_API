@@ -5,9 +5,9 @@ class CustomUserManager(BaseUserManager):
 
     def create_user(self, email, name, password = None, **extra_fields):
         if not email:
-            raise ValueError('The email must be set')
+            raise ValueError('Enter email address')
         if not name:
-            raise ValueError('The name must be set')
+            raise ValueError('Enter name')
         email = self.normalize_email(email)
         user = self.model(email=email, name=name, **extra_fields)
         user.set_password(password)
@@ -29,8 +29,8 @@ class User(AbstractUser):
     first_name = None
     last_name = None
     id = models.AutoField(primary_key=True)
-    email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=100, default='')
+    email = models.EmailField(max_length=50, unique=True)
+    name = models.CharField(max_length=30, default='')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
