@@ -28,7 +28,6 @@ class User(AbstractUser):
     username = None
     first_name = None
     last_name = None
-    id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=50, unique=True)
     name = models.CharField(max_length=30, default='')
 

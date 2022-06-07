@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED
 from rest_framework.decorators import action
@@ -12,7 +12,6 @@ class UserViewSet(mixins.CreateModelMixin,
                 viewsets.GenericViewSet):
 
     queryset = User.objects.all()
-    #serializer_class = UserSerializer
 
     def get_serializer_class(self):
         if self.action == 'create':
@@ -22,7 +21,6 @@ class UserViewSet(mixins.CreateModelMixin,
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        print(serializer.data)
         User.objects.create_user(**serializer.data)
         return Response(status=HTTP_201_CREATED)
 
