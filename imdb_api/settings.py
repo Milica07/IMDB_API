@@ -156,9 +156,9 @@ SIMPLE_JWT = {
 # CORS configuration
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3005",
+    "http://localhost:3000",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3005',
+    'http://localhost:3000',
 ]
